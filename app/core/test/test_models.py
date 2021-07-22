@@ -12,3 +12,9 @@ class ModalTests(TestCase):
         )
         self.assertEqual(user.email,email)
         self.assertTrue(user.check_password(password))
+
+    def test_create_user_email_normal(self):
+        """Checking if user email is normalised"""
+        email = "sanjana.maheshwari456@GMAIL.COM"
+        user = get_user_model().objects(email,"test123")
+        self.assertEqual(user.email,email.lower())
